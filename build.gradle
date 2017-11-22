@@ -1,0 +1,19 @@
+allprojects {
+    apply plugin: "idea"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+    apply plugin: "application"
+
+    dependencies {
+        compile group: 'io.netty', name: 'netty-all', version: '4.0.4.Final'
+    }
+}
