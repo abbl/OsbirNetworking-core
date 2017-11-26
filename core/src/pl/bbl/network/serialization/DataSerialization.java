@@ -8,14 +8,14 @@ import java.nio.charset.StandardCharsets;
 
 public class DataSerialization {
 
-    public static String serializeClass(Object classData){
+    public static byte[] serializeClass(Object classData){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             ObjectOutputStream out = new ObjectOutputStream(byteArrayOutputStream);
             out.writeObject(classData);
             out.close();
             byteArrayOutputStream.close();
-            return convertByteArrayToString(byteArrayOutputStream);
+            return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
         }
