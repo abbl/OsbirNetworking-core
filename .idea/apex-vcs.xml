@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApexVcsIndex">
+    <index-move-record>
+      <option name="firstPath" value="/core/src/pl/bbl/network/server/controlers/UsersControler.java" />
+      <option name="path" value="/core/src/pl/bbl/network/server/factory/UsersControler.java" />
+    </index-move-record>
+  </component>
+</project>
