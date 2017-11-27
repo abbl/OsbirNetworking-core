@@ -12,14 +12,13 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import pl.bbl.network.server.connection.AbstractUser;
-import pl.bbl.network.server.factory.UserFactory;
-import pl.bbl.network.server.handlers.AbstractHandler;
+import pl.bbl.network.server.handlers.AbstractUserHandler;
 import pl.bbl.network.server.hive.UserHive;
 
 import java.util.ArrayList;
 
 public class ServerInstance {
-    private ArrayList<AbstractHandler> handlers;
+    private ArrayList<AbstractUserHandler> handlers;
     private ChannelGroup channelGroup;
     private int port;
 
@@ -45,7 +44,7 @@ public class ServerInstance {
         userHive = new UserHive(abstractUser);
     }
 
-    public void addHandlers(ArrayList<AbstractHandler> handlers){
+    public void addHandlers(ArrayList<AbstractUserHandler> handlers){
          this.handlers.addAll(handlers);
     }
 
