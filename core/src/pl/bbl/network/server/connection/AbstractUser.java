@@ -1,37 +1,28 @@
 package pl.bbl.network.server.connection;
 
+import io.netty.channel.ChannelHandlerContext;
 import pl.bbl.network.packet.BasicPacket;
-import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
 
 public abstract class AbstractUser {
-    private SocketChannel socketChannel;
+    private ChannelHandlerContext channelHandlerContext;
     private String key;
 
-    public AbstractUser(SocketChannel socketChannel){
-        this.socketChannel = socketChannel;
+    public AbstractUser(ChannelHandlerContext channelHandlerContext){
+        this.channelHandlerContext = channelHandlerContext;
     }
 
-    public AbstractUser(SocketChannel socketChannel, String key){
-        this.socketChannel = socketChannel;
+    public AbstractUser(ChannelHandlerContext channelHandlerContext, String key){
+        this.channelHandlerContext = channelHandlerContext;
         this.key = key;
     }
 
     public void sendPacket(BasicPacket packet){
-        try {
-            socketChannel.write(ByteBuffer.wrap(packet.serializeThis().packetData));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        channelHandlerContext.write(ByteBuffer.wrap(packet.serializeThis().packetData));
     }
 
     public void close(){
-        try {
-            socketChannel.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        channelHandlerContext.close();
     }
 
     public boolean isKeyTheSame(String key){

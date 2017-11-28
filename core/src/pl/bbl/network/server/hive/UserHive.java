@@ -1,6 +1,6 @@
 package pl.bbl.network.server.hive;
 
-import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.ChannelHandlerContext;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.factory.UserFactory;
 
@@ -15,8 +15,8 @@ public class UserHive {
         userFactory = new UserFactory(abstractUser);
     }
 
-    public void createUser(SocketChannel socketChannel){
-        users.add(userFactory.buildUser(socketChannel));
+    public void createUser(ChannelHandlerContext channelHandlerContext){
+        users.add(userFactory.buildUser(channelHandlerContext));
     }
 
     public void removeUser(){

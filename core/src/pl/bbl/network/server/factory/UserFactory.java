@@ -1,14 +1,13 @@
 package pl.bbl.network.server.factory;
 
-import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.ChannelHandlerContext;
 import pl.bbl.network.server.connection.AbstractUser;
 
-
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class UserFactory {
     private String className;
-
-    public UserFactory(){}
 
     public UserFactory(AbstractUser abstractUser){
         setClassName(abstractUser);
@@ -18,10 +17,11 @@ public class UserFactory {
         className = abstractUser.getClass().getName();
     }
 
-    public AbstractUser buildUser(SocketChannel socketChannel){
+    public AbstractUser buildUser(ChannelHandlerContext channelHandlerContext){
         try {
-            return (AbstractUser) Class.forName(className).newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            Constructor constructor = Class.forName(className).getConstructor(ChannelHandlerContext.class);
+            return (AbstractUser) constructor.newInstance(channelHandlerContext);
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null;
