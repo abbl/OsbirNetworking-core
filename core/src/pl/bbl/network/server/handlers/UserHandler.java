@@ -4,21 +4,24 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import pl.bbl.network.server.hive.UserHive;
 
-public abstract class AbstractUserHandler extends ChannelInboundHandlerAdapter {
+/**
+ * This handler add user to UserHive.
+ */
+public class UserHandler extends ChannelInboundHandlerAdapter {
     private UserHive userHive;
 
-    public AbstractUserHandler(UserHive userHive){
+    public UserHandler(UserHive userHive){
         this.userHive = userHive;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+        userHive.createUser(ctx);
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) {
-
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        userHive.removeUser(ctx);
     }
 
     @Override

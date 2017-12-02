@@ -16,16 +16,17 @@ public class UserHive {
     }
 
     public void createUser(ChannelHandlerContext channelHandlerContext){
+        System.out.println("Added user with id:" + channelHandlerContext.toString());
         users.add(userFactory.buildUser(channelHandlerContext));
     }
 
-    public void removeUser(){
-
+    public void removeUser(ChannelHandlerContext channelHandlerContext){
+        users.remove(getUserByContextHandler(channelHandlerContext));
     }
 
-    public AbstractUser getUserByKey(String key){
+    public AbstractUser getUserByContextHandler(ChannelHandlerContext channelHandlerContext){
         for(AbstractUser abstractUser : users){
-            if(abstractUser.isKeyTheSame(key))
+            if(abstractUser.isContextHandlerEqual(channelHandlerContext))
                 return abstractUser;
         }
         return null;

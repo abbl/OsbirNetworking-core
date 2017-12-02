@@ -75,8 +75,32 @@
       <file leaf-file-name="ServerInstance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/ServerInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="457">
+              <caret line="39" column="22" lean-forward="true" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#607#608#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataSerialization.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/serialization/DataSerialization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrameworkTester.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/FrameworkTester.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="63" lean-forward="false" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,8 +111,8 @@
       <file leaf-file-name="UserHive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/hive/UserHive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            <state relative-caret-position="601">
+              <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,12 +123,12 @@
       <file leaf-file-name="AbstractUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/connection/AbstractUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="720">
+              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#757#758#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
+                <element signature="e#1068#1069#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,24 +147,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractUserHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/AbstractUserHandler.java">
+      <file leaf-file-name="UserHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/UserHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-              <folding>
-                <element signature="e#349#350#0" expanded="true" />
-                <element signature="e#389#390#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="648">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/factory/UserFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="22" column="81" lean-forward="true" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+            <state relative-caret-position="192">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -721,7 +742,6 @@
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/tools/DataTypes.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/packet/TestPacket.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/serialization/DataSerialization.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/FrameworkTester.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/packet/PacketReadyToSend.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/packet/AbstractPacket.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/packet/BasicPacket.java" />
@@ -730,13 +750,16 @@
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/factory/UsersControler.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/BasicServer.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/connection/ConnectedUser.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/ServerInstance.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/AbstractHandler.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/AbstractUserHandler.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/connection/AbstractUser.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/hive/UserHive.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/FrameworkTester.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/TestHandler.java" />
         <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/factory/UserFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/hive/UserHive.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/connection/AbstractUser.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/ServerInstance.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/UserHandler.java" />
       </list>
     </option>
   </component>
@@ -761,9 +784,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -796,6 +816,30 @@
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsbirNetworking-core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsbirNetworking-core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="packet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsbirNetworking-core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsbirNetworking-core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="serialization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsbirNetworking-core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsbirNetworking-core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -807,10 +851,22 @@
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="handlers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="OsbirNetworking-core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsbirNetworking-core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="hive" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -991,10 +1047,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804233" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1109375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1453125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Log Manager" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1023,14 +1079,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/server/starter/ServerStarter.java" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1143,13 +1191,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/serialization/DataDeserialization.java" />
     <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/packet/TestPacket.java" />
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/FrameworkTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/packet/PacketReadyToSend.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1213,13 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/serialization/DataSerialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/nio/channels/SocketChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3161">
@@ -1241,6 +1275,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.0.4.Final/8df8742e1aafd48b9d3e4cb663e9486aee78d41b/netty-all-4.0.4.Final-sources.jar!/io/netty/channel/ChannelInboundHandlerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1439">
+          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1257,18 +1298,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.0.4.Final/8df8742e1aafd48b9d3e4cb663e9486aee78d41b/netty-all-4.0.4.Final-sources.jar!/io/netty/channel/ChannelInboundHandlerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/TestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1439">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        <state relative-caret-position="144">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/ServerInstance.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/factory/UserFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="192">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1277,44 +1318,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/connection/AbstractUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="720">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/FrameworkTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="63" lean-forward="false" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.0.4.Final/8df8742e1aafd48b9d3e4cb663e9486aee78d41b/netty-all-4.0.4.Final-sources.jar!/io/netty/channel/ChannelHandlerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="124" column="17" lean-forward="false" selection-start-line="124" selection-start-column="17" selection-end-line="124" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/hive/UserHive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        <state relative-caret-position="601">
+          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/AbstractUserHandler.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/handlers/UserHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        <state relative-caret-position="648">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/ServerInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="39" column="22" lean-forward="true" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
           <folding>
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/server/factory/UserFactory.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/bbl/network/serialization/DataSerialization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="22" column="81" lean-forward="true" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="312">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
