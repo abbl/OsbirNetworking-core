@@ -15,7 +15,7 @@ public class AbstractUser {
     }
 
     public void sendPacket(BasicPacket packet){
-        channelHandlerContext.write(ByteBuffer.wrap(packet.serializeThis().packetData));
+        channelHandlerContext.write(ByteBuffer.wrap(packet.serializeThis()));
     }
 
     public void close(){
