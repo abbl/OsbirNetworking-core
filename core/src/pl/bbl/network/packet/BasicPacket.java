@@ -2,6 +2,7 @@ package pl.bbl.network.packet;
 
 import pl.bbl.network.serialization.DataSerialization;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,8 @@ public class BasicPacket implements Serializable{
         return values.get(key);
     }
 
-    public PacketReadyToSend serializeThis(){
-        return new PacketReadyToSend(DataSerialization.serializeClass(this));
+    public byte[] serializeThis(){
+        return DataSerialization.serialize(this);
     }
+
 }

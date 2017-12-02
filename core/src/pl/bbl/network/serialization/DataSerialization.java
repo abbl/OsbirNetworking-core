@@ -1,22 +1,32 @@
 package pl.bbl.network.serialization;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class DataSerialization {
 
-    public static byte[] serializeClass(Object classData){
+    public static byte[] serialize(Object object){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {
             ObjectOutputStream out = new ObjectOutputStream(byteArrayOutputStream);
-            out.writeObject(classData);
+            out.writeObject(object);
             out.close();
             byteArrayOutputStream.close();
             return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object deserialize(byte[] bytes){
+        Object object;
+        try {
+            ObjectInputStream input = new ObjectInputStream(new ByteArrayInputStream(bytes));
+            object = input.readObject();
+            input.close();
+            return object;
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

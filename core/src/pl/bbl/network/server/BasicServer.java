@@ -1,25 +1,22 @@
 package pl.bbl.network.server;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.hive.UserHive;
 
-public class ServerInstance {
+public abstract class BasicServer {
     private UserHive userHive;
     private int port;
 
-    public ServerInstance(int port){
+    public BasicServer(int port){
         this.port = port;
     }
 
-    public ServerInstance(int port, AbstractUser abstractUser){
+    public BasicServer(int port, AbstractUser abstractUser){
         this(port);
         userHive = new UserHive(abstractUser);
     }
@@ -35,7 +32,7 @@ public class ServerInstance {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            addHandlersToChannel();
+                            addHandlersToChannel(socketChannel.pipeline());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
@@ -50,7 +47,7 @@ public class ServerInstance {
         }
     }
 
-    private void addHandlersToChannel(){}
+    protected void addHandlersToChannel(ChannelPipeline pipeline){}
 
     public boolean isUserHiveAvailable(){
         return userHive != null;

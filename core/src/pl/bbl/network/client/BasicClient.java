@@ -1,4 +1,4 @@
 package pl.bbl.network.client;
 
-public class BasicClient {
+public abstract class BasicClient {
 }
