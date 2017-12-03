@@ -8,7 +8,7 @@ import pl.bbl.network.server.hive.UserHive;
  * This handler add user to UserHive.
  */
 public class UserHandler extends AbstractPacketHandler {
-    private UserHive userHive;
+    protected UserHive userHive;
 
     public UserHandler(UserHive userHive){
         this.userHive = userHive;
