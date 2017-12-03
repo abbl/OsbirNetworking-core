@@ -9,7 +9,7 @@ import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.hive.UserHive;
 
 public abstract class BasicServer {
-    private UserHive userHive;
+    protected UserHive userHive;
     private int port;
 
     public BasicServer(int port){
