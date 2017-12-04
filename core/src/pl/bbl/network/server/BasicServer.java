@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.hive.UserHive;
 
-public abstract class BasicServer {
+public abstract class BasicServer implements Runnable{
     protected UserHive userHive;
     private int port;
 
@@ -21,7 +21,7 @@ public abstract class BasicServer {
         userHive = new UserHive(abstractUser);
     }
 
-    public void run() throws Exception {
+    public void run() {
         EventLoopGroup connectionReceiver = new NioEventLoopGroup();
         EventLoopGroup connectionHandler = new NioEventLoopGroup();
 
@@ -41,6 +41,8 @@ public abstract class BasicServer {
             ChannelFuture channelFuture = bootstrap.bind(port).sync();
 
             channelFuture.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             connectionReceiver.shutdownGracefully();
             connectionHandler.shutdownGracefully();
