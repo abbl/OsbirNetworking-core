@@ -3,7 +3,7 @@ package pl.bbl.network.tools;
 import pl.bbl.network.client.BasicClient;
 
 public class TestClient extends BasicClient {
-    protected TestClient(String host, int port) {
+    public TestClient(String host, int port) {
         super(host, port);
     }
 }
