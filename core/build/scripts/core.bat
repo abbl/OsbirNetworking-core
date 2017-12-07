@@ -69,7 +69,7 @@ set CMD_LINE_ARGS=%$
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\core.jar;%APP_HOME%\lib\netty-all-4.0.4.Final.jar
+set CLASSPATH=%APP_HOME%\lib\core.jar;%APP_HOME%\lib\netty-all-4.1.17.Final.jar
 
 @rem Execute core
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CORE_OPTS%  -classpath "%CLASSPATH%" pl.bbl.network.FrameworkTester %CMD_LINE_ARGS%
