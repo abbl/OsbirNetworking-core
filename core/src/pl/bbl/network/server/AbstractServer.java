@@ -19,9 +19,9 @@ public abstract class AbstractServer implements Runnable{
         this.port = port;
     }
 
-    public AbstractServer(int port, AbstractUser abstractUser){
+    public AbstractServer(int port, Class className){
         this(port);
-        userHive = new UserHive(abstractUser);
+        userHive = new UserHive(className);
     }
 
     public void run() {
