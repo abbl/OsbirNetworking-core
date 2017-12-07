@@ -1,29 +1,23 @@
 package pl.bbl.network.server.connection;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
-import pl.bbl.network.packet.BasicPacket;
+import io.netty.channel.socket.SocketChannel;
+import pl.bbl.network.packet.Packet;
 import java.nio.ByteBuffer;
 
 public class AbstractUser {
-    private ChannelHandlerContext channelHandlerContext;
+    private Channel channel;
+    private String id;
     private boolean isAuthenticated;
 
-    public AbstractUser(){}
-
-    public AbstractUser(ChannelHandlerContext channelHandlerContext){
-        this.channelHandlerContext = channelHandlerContext;
+    public AbstractUser(String id, Channel channel){
+        this.id = id;
+        this.channel = channel;
     }
 
-    public void sendPacket(BasicPacket packet){
-        channelHandlerContext.write(ByteBuffer.wrap(packet.serializeThis()));
-    }
-
-    public void close(){
-        channelHandlerContext.close();
-    }
-
-    public boolean isContextHandlerEqual(ChannelHandlerContext channelHandlerContext){
-        return this.channelHandlerContext.equals(channelHandlerContext);
+    public void sendPacket(Packet packet){
+        channel.writeAndFlush(packet);
     }
 
     public boolean isAuthenticated() {
@@ -34,7 +28,7 @@ public class AbstractUser {
         isAuthenticated = authenticated;
     }
 
-    public ChannelHandlerContext getContextHandler(){
-        return channelHandlerContext;
+    public String getId(){
+        return id;
     }
 }

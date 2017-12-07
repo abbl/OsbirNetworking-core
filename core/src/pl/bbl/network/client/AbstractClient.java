@@ -6,17 +6,23 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
+import pl.bbl.network.packet.Packet;
 
-public abstract class BasicClient {
+public abstract class AbstractClient implements Runnable{
+    private ChannelFuture channelFuture;
     private String host;
     private int port;
 
-    protected BasicClient(String host, int port){
+    protected AbstractClient(String host, int port){
         this.host = host;
         this.port = port;
     }
 
-    public void start(){
+    @Override
+    public void run(){
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
 
@@ -30,7 +36,7 @@ public abstract class BasicClient {
                     addHandlersToChannel(ch.pipeline());
                 }
             });
-        ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
+        channelFuture = bootstrap.connect(host, port).sync();
         channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -39,5 +45,12 @@ public abstract class BasicClient {
         }
     }
 
-    protected void addHandlersToChannel(ChannelPipeline pipeline){}
+    protected void addHandlersToChannel(ChannelPipeline pipeline){
+        pipeline.addLast(new ObjectEncoder(),
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+    }
+
+    public void write(Packet packet){
+        channelFuture.channel().writeAndFlush(packet);
+    }
 }

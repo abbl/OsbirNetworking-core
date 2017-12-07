@@ -14,6 +14,6 @@ project(":core") {
     apply plugin: "application"
 
     dependencies {
-        compile group: 'io.netty', name: 'netty-all', version: '4.0.4.Final'
+        compile group: 'io.netty', name: 'netty-all', version: '4.1.17.Final'
     }
 }

@@ -5,18 +5,21 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.hive.UserHive;
 
-public abstract class BasicServer implements Runnable{
+public abstract class AbstractServer implements Runnable{
     protected UserHive userHive;
     private int port;
 
-    public BasicServer(int port){
+    public AbstractServer(int port){
         this.port = port;
     }
 
-    public BasicServer(int port, AbstractUser abstractUser){
+    public AbstractServer(int port, AbstractUser abstractUser){
         this(port);
         userHive = new UserHive(abstractUser);
     }
@@ -49,7 +52,12 @@ public abstract class BasicServer implements Runnable{
         }
     }
 
-    protected void addHandlersToChannel(ChannelPipeline pipeline){}
+    protected AbstractUser addHandlersToChannel(ChannelPipeline pipeline){
+        AbstractUser abstractUser = userHive.createUser(pipeline.channel());
+        pipeline.addLast(new ObjectEncoder(),
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+        return abstractUser;
+    }
 
     public boolean isUserHiveAvailable(){
         return userHive != null;

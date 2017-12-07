@@ -1,8 +1,8 @@
 package pl.bbl.network.tools;
 
-import pl.bbl.network.client.BasicClient;
+import pl.bbl.network.client.AbstractClient;
 
-public class TestClient extends BasicClient {
+public class TestClient extends AbstractClient {
     public TestClient(String host, int port) {
         super(host, port);
     }

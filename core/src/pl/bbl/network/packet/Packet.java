@@ -7,11 +7,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BasicPacket implements Serializable{
+public class Packet implements Serializable{
     public String packetType;
     public Map<String, Object> values;
 
-    public BasicPacket(String packetType){
+    public Packet(String packetType){
         this.packetType = packetType;
         values = new HashMap<>();
     }
