@@ -56,16 +56,15 @@ public abstract class AbstractClient implements Runnable{
     public void write(Packet packet){
         if(channelFuture == null)
             waitForChannelFutureAndSendPacket(packet);
-        else {
+        else
             channelFuture.channel().writeAndFlush(packet);
-            checkIfPacketWasSent();
-        }
     }
 
     private void waitForChannelFutureAndSendPacket(Packet packet){
         new Thread(() -> {
             while(channelFuture == null){
                 //just waiting for ChannelFuture to initialize.
+                System.out.print("Connecting...");
             }
             write(packet);
         }).start();
