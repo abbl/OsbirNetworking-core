@@ -9,17 +9,22 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.channels.SocketChannel;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserFactory {
     private static final int ID_LENGTH = 32;
     private String className;
 
-    public UserFactory(AbstractUser abstractUser){
-        setClassName(abstractUser);
+    public UserFactory(Class className){
+        setClassName(className);
     }
 
-    public void setClassName(AbstractUser abstractUser){
-        className = abstractUser.getClass().getName();
+    public void setClassName(Class className){
+        if(AbstractUser.class.isAssignableFrom(className))
+            this.className = className.getName();
+        else
+            Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "Class which is not a subclass of AbstractUser was passed in UserFactory.setClassName()");
     }
 
     public AbstractUser buildUser(Channel channel){

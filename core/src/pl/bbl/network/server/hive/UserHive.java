@@ -12,9 +12,9 @@ public class UserHive {
     private UserFactory userFactory;
     private ArrayList<AbstractUser> users;
 
-    public UserHive(AbstractUser abstractUser){
+    public UserHive(Class className){
         users = new ArrayList<>();
-        userFactory = new UserFactory(abstractUser);
+        userFactory = new UserFactory(className);
     }
 
     public AbstractUser createUser(Channel channel){
