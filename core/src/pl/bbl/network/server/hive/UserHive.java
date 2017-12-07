@@ -7,6 +7,8 @@ import pl.bbl.network.server.factory.UserFactory;
 
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserHive {
     private UserFactory userFactory;
@@ -18,7 +20,8 @@ public class UserHive {
     }
 
     public AbstractUser createUser(Channel channel){
-       AbstractUser abstractUser = userFactory.buildUser(channel);
+        Logger.getLogger(getClass().getName()).log(Level.INFO, "Added new connection to UserHive.");
+        AbstractUser abstractUser = userFactory.buildUser(channel);
        users.add(abstractUser);
        return abstractUser;
     }

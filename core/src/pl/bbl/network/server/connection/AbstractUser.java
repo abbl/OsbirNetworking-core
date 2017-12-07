@@ -6,7 +6,7 @@ import io.netty.channel.socket.SocketChannel;
 import pl.bbl.network.packet.Packet;
 import java.nio.ByteBuffer;
 
-public class AbstractUser {
+public abstract class AbstractUser {
     private Channel channel;
     private String id;
     private boolean isAuthenticated;

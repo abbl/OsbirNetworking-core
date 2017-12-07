@@ -28,6 +28,7 @@ public class UserFactory {
     }
 
     public AbstractUser buildUser(Channel channel){
+        Logger.getLogger(getClass().getName()).log(Level.INFO, "User has been built");
         try {
             Constructor constructor = Class.forName(className).getConstructor(String.class, Channel.class);
             return (AbstractUser) constructor.newInstance(generateId(), channel);

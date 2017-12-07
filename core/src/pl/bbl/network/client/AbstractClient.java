@@ -11,6 +11,9 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.packet.Packet;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public abstract class AbstractClient implements Runnable{
     private ChannelFuture channelFuture;
     private String host;
@@ -55,6 +58,7 @@ public abstract class AbstractClient implements Runnable{
             waitForChannelFutureAndSendPacket(packet);
         else
             channelFuture.channel().writeAndFlush(packet);
+        checkIfPacketWasSent();
     }
 
     private void waitForChannelFutureAndSendPacket(Packet packet){
@@ -64,5 +68,11 @@ public abstract class AbstractClient implements Runnable{
             }
             write(packet);
         }).start();
+    }
+
+    private void checkIfPacketWasSent(){
+        if(!channelFuture.isSuccess()){
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Packet wasn't sent because:" + channelFuture.cause());
+        }
     }
 }
