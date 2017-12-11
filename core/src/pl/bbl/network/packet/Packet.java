@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Packet implements Serializable{
+    private Map<String, Object> values;
     public String packetType;
     public String packetPurpose;
-    public Map<String, Object> values;
 
     public Packet(String packetType, String packetPurpose){
-        this.packetType = packetType;
         values = new HashMap<>();
+        this.packetType = packetType;
+        this.packetPurpose = packetPurpose;
     }
 
     public void addData(String key, Object value){
