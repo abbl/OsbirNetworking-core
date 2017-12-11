@@ -6,9 +6,10 @@ import java.util.Map;
 
 public class Packet implements Serializable{
     public String packetType;
+    public String packetPurpose;
     public Map<String, Object> values;
 
-    public Packet(String packetType){
+    public Packet(String packetType, String packetPurpose){
         this.packetType = packetType;
         values = new HashMap<>();
     }
