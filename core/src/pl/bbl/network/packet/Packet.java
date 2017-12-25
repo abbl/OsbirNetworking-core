@@ -15,8 +15,9 @@ public class Packet implements Serializable{
         this.packetPurpose = packetPurpose;
     }
 
-    public void addData(String key, Object value){
+    public Packet addData(String key, Object value){
         values.put(key, value);
+        return this;
     }
 
     public Object getData(String key){
