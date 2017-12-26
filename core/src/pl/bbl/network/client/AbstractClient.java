@@ -15,7 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class AbstractClient implements Runnable{
-    private ChannelFuture channelFuture;
+    private static final Object lock = new Object();
+    private volatile ChannelFuture channelFuture;
     private String host;
     private int port;
 
@@ -34,18 +35,20 @@ public abstract class AbstractClient implements Runnable{
             bootstrap.channel(NioSocketChannel.class);
             bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
             bootstrap.handler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                protected void initChannel(SocketChannel ch) throws Exception {
-                    addHandlersToChannel(ch.pipeline());
-                }
-            });
-        channelFuture = bootstrap.connect(host, port).sync();
-        channelFuture.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            workerGroup.shutdownGracefully();
-        }
+                    @Override
+                    protected void initChannel(SocketChannel ch) throws Exception { addHandlersToChannel(ch.pipeline());
+                    }
+                });
+            channelFuture = bootstrap.connect(host, port).sync();
+            synchronized (lock){
+                lock.notify();
+            }
+            channelFuture.channel().closeFuture().sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                workerGroup.shutdownGracefully();
+            }
     }
 
     protected void addHandlersToChannel(ChannelPipeline pipeline){
@@ -56,17 +59,24 @@ public abstract class AbstractClient implements Runnable{
     public void write(Packet packet){
         if(channelFuture == null)
             waitForChannelFutureAndSendPacket(packet);
-        else
+        else{
             channelFuture.channel().writeAndFlush(packet);
+        }
+
     }
 
     private void waitForChannelFutureAndSendPacket(Packet packet){
         new Thread(() -> {
-            while(channelFuture == null){
-                //just waiting for ChannelFuture to initialize.
-                System.out.print("Connecting...");
+            synchronized (lock){
+                while(channelFuture == null){
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                write(packet);
             }
-            write(packet);
         }).start();
     }
 
