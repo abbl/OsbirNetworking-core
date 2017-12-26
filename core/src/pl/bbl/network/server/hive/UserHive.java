@@ -27,7 +27,12 @@ public class UserHive {
     }
 
     public void removeUser(String id){
-        users.remove(getUserById(id));
+        AbstractUser abstractUser = getUserById(id);
+        if(abstractUser != null){
+            abstractUser.disconnect();
+            users.remove(abstractUser);
+        }else
+            Logger.getLogger(getClass().getName()).log(Level.INFO, "Can't disconnect user cause there is no such id in list.");
     }
 
     public AbstractUser getUserById(String id){

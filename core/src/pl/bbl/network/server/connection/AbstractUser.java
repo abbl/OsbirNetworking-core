@@ -20,6 +20,10 @@ public abstract class AbstractUser {
         channel.writeAndFlush(packet);
     }
 
+    public void disconnect(){
+        channel.close();
+    }
+
     public boolean isAuthenticated() {
         return isAuthenticated;
     }
