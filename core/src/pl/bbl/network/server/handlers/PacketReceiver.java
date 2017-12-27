@@ -5,8 +5,8 @@ import pl.bbl.network.packet.Packet;
 import pl.bbl.network.tools.NetworkLogger;
 
 public abstract class PacketReceiver {
+    protected AbstractClient abstractClient;
     private String receiverType;
-    private AbstractClient abstractClient;
 
     protected PacketReceiver(String receiverType){
         this.receiverType = receiverType;
