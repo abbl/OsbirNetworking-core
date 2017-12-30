@@ -25,6 +25,13 @@ public class PacketHandler extends ChannelInboundHandlerAdapter{
         }
     }
 
+    public PacketReceiver getReceiver(String receiverType){
+        for(PacketReceiver packetReceiver : receivers)
+            if(packetReceiver.isReceiverTypeEqual(receiverType))
+                return packetReceiver;
+        return null;
+    }
+
     public void addReceiver(PacketReceiver packetReceiver){
         receivers.add(packetReceiver);
     }

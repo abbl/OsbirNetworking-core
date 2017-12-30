@@ -1,10 +1,10 @@
 package pl.bbl.network.server.connection;
 
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.socket.SocketChannel;
 import pl.bbl.network.packet.Packet;
-import java.nio.ByteBuffer;
+import pl.bbl.network.server.AbstractServer;
+import pl.bbl.network.server.handlers.PacketHandler;
+import pl.bbl.network.server.handlers.PacketReceiver;
 
 public abstract class AbstractUser {
     private Channel channel;
@@ -24,15 +24,23 @@ public abstract class AbstractUser {
         channel.close();
     }
 
+    public PacketReceiver getPacketReceiver(String receiverType){
+        return retrievePacketHandlerFromPipeline().getReceiver(receiverType);
+    }
+
+    public PacketHandler retrievePacketHandlerFromPipeline(){
+        return (PacketHandler) channel.pipeline().get(AbstractServer.PACKET_HANDLER_NAME);
+    }
+
+    public String getId(){
+        return id;
+    }
+
     public boolean isAuthenticated() {
         return isAuthenticated;
     }
 
     public void setAuthenticated(boolean authenticated) {
         isAuthenticated = authenticated;
-    }
-
-    public String getId(){
-        return id;
     }
 }

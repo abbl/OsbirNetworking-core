@@ -9,9 +9,11 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.server.connection.AbstractUser;
+import pl.bbl.network.server.handlers.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
 
 public abstract class AbstractServer implements Runnable{
+    public static final String PACKET_HANDLER_NAME = "PACKET_HANDLER";
     protected UserHive userHive;
     private int port;
 
@@ -56,6 +58,7 @@ public abstract class AbstractServer implements Runnable{
         AbstractUser abstractUser = userHive.createUser(pipeline.channel());
         pipeline.addLast(new ObjectEncoder(),
                 new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+        pipeline.addLast(PACKET_HANDLER_NAME, new PacketHandler());
         return abstractUser;
     }
 

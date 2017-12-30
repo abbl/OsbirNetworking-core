@@ -62,7 +62,6 @@ public abstract class AbstractClient implements Runnable{
         else{
             channelFuture.channel().writeAndFlush(packet);
         }
-
     }
 
     private void waitForChannelFutureAndSendPacket(Packet packet){
