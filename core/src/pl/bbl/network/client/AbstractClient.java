@@ -44,6 +44,7 @@ public abstract class AbstractClient implements Runnable{
                 lock.notify();
             }
             channelFuture.channel().closeFuture().sync();
+            channelFuture = null;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
@@ -83,5 +84,9 @@ public abstract class AbstractClient implements Runnable{
         if(!channelFuture.isSuccess()){
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Packet wasn't sent because:" + channelFuture.cause());
         }
+    }
+
+    public boolean isConnected(){
+        return channelFuture != null;
     }
 }
