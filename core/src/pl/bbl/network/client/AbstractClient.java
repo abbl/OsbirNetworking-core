@@ -87,6 +87,6 @@ public abstract class AbstractClient implements Runnable{
     }
 
     public boolean isConnected(){
-        return channelFuture != null;
+        return channelFuture != null && channelFuture.channel().isOpen();
     }
 }
