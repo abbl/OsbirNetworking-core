@@ -11,9 +11,6 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.packet.Packet;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public abstract class AbstractClient implements Runnable{
     private static final Object lock = new Object();
     private volatile ChannelFuture channelFuture;
@@ -29,22 +26,11 @@ public abstract class AbstractClient implements Runnable{
     public void run(){
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
-
         try {
-            bootstrap.group(workerGroup);
-            bootstrap.channel(NioSocketChannel.class);
-            bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
-            bootstrap.handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception { addHandlersToChannel(ch.pipeline());
-                    }
-                });
-            channelFuture = bootstrap.connect(host, port).sync();
-            synchronized (lock){
-                lock.notify();
-            }
-            channelFuture.channel().closeFuture().sync();
-            channelFuture = null;
+            prepareBootstrap(bootstrap, workerGroup);
+            initializeChannelFeature(bootstrap);
+            unlockPacketSending();
+            closeConnectionAfterCloseCall();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
@@ -52,9 +38,33 @@ public abstract class AbstractClient implements Runnable{
             }
     }
 
+    private void prepareBootstrap(Bootstrap bootstrap, EventLoopGroup workerGroup){
+        bootstrap.group(workerGroup);
+        bootstrap.channel(NioSocketChannel.class);
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.handler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            protected void initChannel(SocketChannel ch) throws Exception { addHandlersToChannel(ch.pipeline());
+            }
+        });
+    }
+
     protected void addHandlersToChannel(ChannelPipeline pipeline){
         pipeline.addLast(new ObjectEncoder(),
                 new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+    }
+
+    private void initializeChannelFeature(Bootstrap bootstrap) throws InterruptedException {
+        channelFuture = bootstrap.connect(host, port).sync();
+    }
+
+    private synchronized void unlockPacketSending(){
+        lock.notify();
+    }
+
+    private void closeConnectionAfterCloseCall() throws InterruptedException {
+        channelFuture.channel().closeFuture().sync();
+        channelFuture = null;
     }
 
     public void write(Packet packet){
@@ -78,12 +88,6 @@ public abstract class AbstractClient implements Runnable{
                 write(packet);
             }
         }).start();
-    }
-
-    private void checkIfPacketWasSent(){
-        if(!channelFuture.isSuccess()){
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Packet wasn't sent because:" + channelFuture.cause());
-        }
     }
 
     public boolean isConnected(){
