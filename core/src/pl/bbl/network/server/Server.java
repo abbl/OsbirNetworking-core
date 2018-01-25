@@ -13,12 +13,12 @@ import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
 
-public class AbstractServer implements Runnable{
+public class Server implements Runnable{
     protected UserHive userHive;
     private PacketDistributor packetDistributor;
     private int port;
 
-    public AbstractServer(int port, Class className, PacketDistributor packetDistributor){
+    public Server(int port, Class className, PacketDistributor packetDistributor){
         this.port = port;
         this.userHive = new UserHive(className);
         this.packetDistributor = packetDistributor;

@@ -5,7 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import pl.bbl.network.client.ClientConnection;
 import pl.bbl.network.packet.Packet;
-import pl.bbl.network.server.AbstractServer;
+import pl.bbl.network.server.Server;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.tools.LogType;
 import pl.bbl.network.tools.NetworkLogger;
@@ -13,15 +13,15 @@ import pl.bbl.network.tools.NetworkLogger;
 public class PacketHandler extends ChannelInboundHandlerAdapter{
     private PacketDistributor packetDistributor;
     private ClientConnection clientConnection;
-    private AbstractServer abstractServer;
+    private Server server;
 
     public PacketHandler(PacketDistributor packetDistributor){
         this.packetDistributor = packetDistributor;
     }
 
-    public PacketHandler(PacketDistributor packetDistributor, AbstractServer abstractServer){
+    public PacketHandler(PacketDistributor packetDistributor, Server server){
         this(packetDistributor);
-        this.abstractServer = abstractServer;
+        this.server = server;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class PacketHandler extends ChannelInboundHandlerAdapter{
     }
 
     private void passPacket(ChannelHandlerContext ctx, Object msg) {
-        if(abstractServer != null){ // Passes packet to server type receiver
+        if(server != null){ // Passes packet to server type receiver
             AbstractUser abstractUser = getUser(ctx.channel());
             if(abstractUser != null){
                 packetDistributor.distributePacket((Packet)msg, abstractUser);
@@ -49,6 +49,6 @@ public class PacketHandler extends ChannelInboundHandlerAdapter{
     }
 
     private AbstractUser getUser(Channel channel){
-        return abstractServer.getUser(channel);
+        return server.getUser(channel);
     }
 }

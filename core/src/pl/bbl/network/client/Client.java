@@ -13,14 +13,14 @@ import pl.bbl.network.packet.Packet;
 import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
 
-public class AbstractClient implements Runnable{
+public class Client implements Runnable{
     private static final Object lock = new Object();
     private volatile ChannelFuture channelFuture;
     private PacketDistributor packetDistributor;
     private String host;
     private int port;
 
-    protected AbstractClient(String host, int port, PacketDistributor packetDistributor){
+    protected Client(String host, int port, PacketDistributor packetDistributor){
         this.host = host;
         this.port = port;
         this.packetDistributor = packetDistributor;
