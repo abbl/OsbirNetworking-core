@@ -9,7 +9,6 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.server.connection.AbstractUser;
-import pl.bbl.network.server.handlers.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
 
 public abstract class AbstractServer implements Runnable{

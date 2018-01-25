@@ -3,8 +3,6 @@ package pl.bbl.network.server.connection;
 import io.netty.channel.Channel;
 import pl.bbl.network.packet.Packet;
 import pl.bbl.network.server.AbstractServer;
-import pl.bbl.network.server.handlers.PacketHandler;
-import pl.bbl.network.server.handlers.PacketReceiver;
 
 public abstract class AbstractUser {
     private Channel channel;
