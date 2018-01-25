@@ -1,7 +1,14 @@
 package pl.bbl.network.tools;
 
 public class NetworkLogger {
-    public static void log(String message){
-        System.out.println("[NETWORK_FRAMEWORK] " + message);
+    private static LogType workingMode = LogType.INFO;
+
+    public static void log(LogType logType, String message){
+        if(workingMode == logType)
+            System.out.println("[NETWORK_FRAMEWORK] " + message);
+    }
+
+    public static void changeWorkingMode(LogType logType){
+        workingMode = logType;
     }
 }

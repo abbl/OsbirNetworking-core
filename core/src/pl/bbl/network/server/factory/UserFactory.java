@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.unix.Socket;
 import pl.bbl.network.server.connection.AbstractUser;
+import pl.bbl.network.tools.LogType;
 import pl.bbl.network.tools.NetworkLogger;
 
 import java.lang.reflect.Constructor;
@@ -25,11 +26,11 @@ public class UserFactory {
         if(AbstractUser.class.isAssignableFrom(className))
             this.className = className.getName();
         else
-            NetworkLogger.log("Class which is not a subclass of AbstractUser was passed in UserFactory.setClassName()");
+            NetworkLogger.log(LogType.INFO,"Class which is not a subclass of AbstractUser was passed in UserFactory.setClassName()");
     }
 
     public AbstractUser buildUser(Channel channel){
-        NetworkLogger.log("User has been built");
+        NetworkLogger.log(LogType.DEBUG,"User has been built");
         try {
             Constructor constructor = Class.forName(className).getConstructor(String.class, Channel.class);
             return (AbstractUser) constructor.newInstance(generateId(), channel);

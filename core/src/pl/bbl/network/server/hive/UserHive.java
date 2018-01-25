@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.factory.UserFactory;
+import pl.bbl.network.tools.LogType;
 import pl.bbl.network.tools.NetworkLogger;
 
 import java.nio.channels.SocketChannel;
@@ -21,7 +22,7 @@ public class UserHive {
     }
 
     public AbstractUser createUser(Channel channel){
-        NetworkLogger.log("Added new connection to UserHive.");
+        NetworkLogger.log(LogType.INFO, "New user connected.");
         AbstractUser abstractUser = userFactory.buildUser(channel);
         users.add(abstractUser);
         return abstractUser;
@@ -33,7 +34,15 @@ public class UserHive {
             abstractUser.disconnect();
             users.remove(abstractUser);
         }else
-            NetworkLogger.log("Can't disconnect user cause there is no such id in list.");
+            NetworkLogger.log(LogType.DEBUG, "Can't disconnect user cause there is no such id in list.");
+    }
+
+    public AbstractUser getUserByChannel(Channel channel){
+        for(AbstractUser abstractUser : users){
+            if(abstractUser.isChannelEqual(channel))
+                return abstractUser;
+        }
+        return null;
     }
 
     public AbstractUser getUserById(String id){
@@ -43,9 +52,5 @@ public class UserHive {
             }
         }
         return null;
-    }
-
-    public ArrayList<AbstractUser> getUsers() {
-        return users;
     }
 }

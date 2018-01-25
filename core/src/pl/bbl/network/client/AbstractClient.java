@@ -10,16 +10,20 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.packet.Packet;
+import pl.bbl.network.server.handler.PacketDistributor;
+import pl.bbl.network.server.handler.PacketHandler;
 
-public abstract class AbstractClient implements Runnable{
+public class AbstractClient implements Runnable{
     private static final Object lock = new Object();
     private volatile ChannelFuture channelFuture;
+    private PacketDistributor packetDistributor;
     private String host;
     private int port;
 
-    protected AbstractClient(String host, int port){
+    protected AbstractClient(String host, int port, PacketDistributor packetDistributor){
         this.host = host;
         this.port = port;
+        this.packetDistributor = packetDistributor;
     }
 
     @Override
@@ -51,7 +55,7 @@ public abstract class AbstractClient implements Runnable{
 
     protected void addHandlersToChannel(ChannelPipeline pipeline){
         pipeline.addLast(new ObjectEncoder(),
-                new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor));
     }
 
     private void initializeChannelFeature(Bootstrap bootstrap) throws InterruptedException {

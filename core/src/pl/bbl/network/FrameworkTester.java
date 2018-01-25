@@ -1,6 +1,6 @@
 package pl.bbl.network;
 
-public class FrameworkTester {
+class FrameworkTester {
     public static void main(String[] args){
 
     }

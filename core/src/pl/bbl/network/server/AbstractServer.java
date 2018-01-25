@@ -9,20 +9,19 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.server.connection.AbstractUser;
+import pl.bbl.network.server.handler.PacketDistributor;
+import pl.bbl.network.server.handler.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
 
-public abstract class AbstractServer implements Runnable{
-    public static final String PACKET_HANDLER_NAME = "PACKET_HANDLER";
+public class AbstractServer implements Runnable{
     protected UserHive userHive;
+    private PacketDistributor packetDistributor;
     private int port;
 
-    public AbstractServer(int port){
+    public AbstractServer(int port, Class className, PacketDistributor packetDistributor){
         this.port = port;
-    }
-
-    public AbstractServer(int port, Class className){
-        this(port);
-        userHive = new UserHive(className);
+        this.userHive = new UserHive(className);
+        this.packetDistributor = packetDistributor;
     }
 
     public void run() {
@@ -53,15 +52,13 @@ public abstract class AbstractServer implements Runnable{
         }
     }
 
-    protected AbstractUser addHandlersToChannel(ChannelPipeline pipeline){
-        AbstractUser abstractUser = userHive.createUser(pipeline.channel());
+    private void addHandlersToChannel(ChannelPipeline pipeline){
+        userHive.createUser(pipeline.channel());
         pipeline.addLast(new ObjectEncoder(),
-                new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
-        pipeline.addLast(PACKET_HANDLER_NAME, new PacketHandler());
-        return abstractUser;
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor, this));
     }
 
-    public boolean isUserHiveAvailable(){
-        return userHive != null;
+    public AbstractUser getUser(Channel channel){
+        return userHive.getUserByChannel(channel);
     }
 }

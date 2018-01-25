@@ -6,13 +6,11 @@ import java.util.Map;
 
 public class Packet implements Serializable{
     private Map<String, Object> values;
-    public String packetType;
-    public String packetPurpose;
+    private String packetType;
 
-    public Packet(String packetType, String packetPurpose){
+    public Packet(String packetType){
         values = new HashMap<>();
         this.packetType = packetType;
-        this.packetPurpose = packetPurpose;
     }
 
     public Packet addData(String key, Object value){
@@ -22,5 +20,9 @@ public class Packet implements Serializable{
 
     public Object getData(String key){
         return values.get(key);
+    }
+
+    public String getPacketType(){
+        return packetType;
     }
 }

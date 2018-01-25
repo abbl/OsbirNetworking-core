@@ -22,14 +22,6 @@ public abstract class AbstractUser {
         channel.close();
     }
 
-    public PacketReceiver getPacketReceiver(String receiverType){
-        return retrievePacketHandlerFromPipeline().getReceiver(receiverType);
-    }
-
-    public PacketHandler retrievePacketHandlerFromPipeline(){
-        return (PacketHandler) channel.pipeline().get(AbstractServer.PACKET_HANDLER_NAME);
-    }
-
     public String getId(){
         return id;
     }
@@ -40,5 +32,9 @@ public abstract class AbstractUser {
 
     public void setAuthenticated(boolean authenticated) {
         isAuthenticated = authenticated;
+    }
+
+    public boolean isChannelEqual(Channel channel){
+        return this.channel.equals(channel);
     }
 }
