@@ -12,6 +12,8 @@ import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
+import pl.bbl.network.tools.LogType;
+import pl.bbl.network.tools.NetworkLogger;
 
 public class Server implements Runnable{
     protected UserHive userHive;

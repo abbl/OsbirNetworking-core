@@ -20,7 +20,7 @@ public class Client implements Runnable{
     private String host;
     private int port;
 
-    protected Client(String host, int port, PacketDistributor packetDistributor){
+    public Client(String host, int port, PacketDistributor packetDistributor){
         this.host = host;
         this.port = port;
         this.packetDistributor = packetDistributor;
