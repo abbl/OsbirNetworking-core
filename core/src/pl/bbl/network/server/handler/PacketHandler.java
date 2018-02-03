@@ -30,6 +30,7 @@ public class PacketHandler extends ChannelInboundHandlerAdapter{
     }
 
     private void passPacket(ChannelHandlerContext ctx, Object msg) {
+        NetworkLogger.log(LogType.DEBUG, "Received packet : [" + ((Packet)msg).getPacketType() + "]");
         if(server != null){ // Passes packet to server type receiver
             AbstractUser abstractUser = getUser(ctx.channel());
             if(abstractUser != null){

@@ -30,16 +30,18 @@ public class Client implements Runnable{
     public void run(){
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
-        try {
-            prepareBootstrap(bootstrap, workerGroup);
-            initializeChannelFeature(bootstrap);
-            unlockPacketSending();
-            closeConnectionAfterCloseCall();
+        synchronized (lock){
+            try {
+                prepareBootstrap(bootstrap, workerGroup);
+                initializeChannelFeature(bootstrap);
+                unlockPacketSending();
+                closeConnectionAfterCloseCall();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 workerGroup.shutdownGracefully();
             }
+        }
     }
 
     private void prepareBootstrap(Bootstrap bootstrap, EventLoopGroup workerGroup){
