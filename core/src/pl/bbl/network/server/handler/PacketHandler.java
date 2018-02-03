@@ -44,6 +44,13 @@ public class PacketHandler extends ChannelInboundHandlerAdapter{
         }
     }
 
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        if(server != null){
+            server.removeUserWithoutDisconnecting(ctx.channel());
+        }
+    }
+
     private void updateClientConnection(Channel channel){
         if(clientConnection == null)
             clientConnection = new ClientConnection(channel);

@@ -37,6 +37,14 @@ public class UserHive {
             NetworkLogger.log(LogType.DEBUG, "Can't disconnect user cause there is no such id in list.");
     }
 
+    public void removeUserWithoutDisconnecting(Channel channel){
+        AbstractUser abstractUser = getUserByChannel(channel);
+        if(abstractUser != null){
+            users.remove(abstractUser);
+            NetworkLogger.log(LogType.DEBUG, "User has been removed from UserHive object.");
+        }
+    }
+
     public AbstractUser getUserByChannel(Channel channel){
         for(AbstractUser abstractUser : users){
             if(abstractUser.isChannelEqual(channel))

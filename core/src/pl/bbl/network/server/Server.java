@@ -71,4 +71,8 @@ public class Server implements Runnable{
     public ArrayList<AbstractUser> getUsers(){
         return userHive.getUsers();
     }
+
+    public void removeUserWithoutDisconnecting(Channel channel){
+        userHive.removeUserWithoutDisconnecting(channel);
+    }
 }
