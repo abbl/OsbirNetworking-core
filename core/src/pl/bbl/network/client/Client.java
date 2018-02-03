@@ -12,6 +12,8 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.packet.Packet;
 import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
+import pl.bbl.network.tools.LogType;
+import pl.bbl.network.tools.NetworkLogger;
 
 public class Client implements Runnable{
     private static final Object lock = new Object();
@@ -30,18 +32,19 @@ public class Client implements Runnable{
     public void run(){
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
-        synchronized (lock){
             try {
                 prepareBootstrap(bootstrap, workerGroup);
-                initializeChannelFeature(bootstrap);
-                unlockPacketSending();
-                closeConnectionAfterCloseCall();
+                channelFuture = bootstrap.connect(host, port).sync();
+                synchronized (lock) {
+                    lock.notify();
+                }
+                channelFuture.channel().closeFuture().sync();
+                channelFuture = null;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 workerGroup.shutdownGracefully();
             }
-        }
     }
 
     private void prepareBootstrap(Bootstrap bootstrap, EventLoopGroup workerGroup){
@@ -58,19 +61,6 @@ public class Client implements Runnable{
     protected void addHandlersToChannel(ChannelPipeline pipeline){
         pipeline.addLast(new ObjectEncoder(),
                 new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor));
-    }
-
-    private void initializeChannelFeature(Bootstrap bootstrap) throws InterruptedException {
-        channelFuture = bootstrap.connect(host, port).sync();
-    }
-
-    private synchronized void unlockPacketSending(){
-        lock.notify();
-    }
-
-    private void closeConnectionAfterCloseCall() throws InterruptedException {
-        channelFuture.channel().closeFuture().sync();
-        channelFuture = null;
     }
 
     public void write(Packet packet){

@@ -53,4 +53,8 @@ public class UserHive {
         }
         return null;
     }
+
+    public ArrayList<AbstractUser> getUsers() {
+        return users;
+    }
 }

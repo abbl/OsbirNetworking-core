@@ -14,6 +14,6 @@ public class ClientConnection {
     }
 
     public void sendPacket(Packet packet){
-        channel.write(packet);
+        channel.writeAndFlush(packet);
     }
 }

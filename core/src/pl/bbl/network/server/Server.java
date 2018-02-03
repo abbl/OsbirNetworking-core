@@ -12,8 +12,8 @@ import pl.bbl.network.server.connection.AbstractUser;
 import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
 import pl.bbl.network.server.hive.UserHive;
-import pl.bbl.network.tools.LogType;
-import pl.bbl.network.tools.NetworkLogger;
+
+import java.util.ArrayList;
 
 public class Server implements Runnable{
     protected UserHive userHive;
@@ -62,5 +62,13 @@ public class Server implements Runnable{
 
     public AbstractUser getUser(Channel channel){
         return userHive.getUserByChannel(channel);
+    }
+
+    public AbstractUser getUserById(String id){
+        return userHive.getUserById(id);
+    }
+
+    public ArrayList<AbstractUser> getUsers(){
+        return userHive.getUsers();
     }
 }
