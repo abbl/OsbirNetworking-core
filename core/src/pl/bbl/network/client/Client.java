@@ -10,6 +10,7 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import pl.bbl.network.packet.Packet;
+import pl.bbl.network.server.ExceptionHandler;
 import pl.bbl.network.server.handler.PacketDistributor;
 import pl.bbl.network.server.handler.PacketHandler;
 import pl.bbl.network.tools.LogType;
@@ -60,7 +61,7 @@ public class Client implements Runnable{
 
     protected void addHandlersToChannel(ChannelPipeline pipeline){
         pipeline.addLast(new ObjectEncoder(),
-                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor));
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor), new ExceptionHandler());
     }
 
     public void write(Packet packet){

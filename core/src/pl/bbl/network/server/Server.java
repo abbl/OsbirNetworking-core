@@ -57,7 +57,7 @@ public class Server implements Runnable{
     private void addHandlersToChannel(ChannelPipeline pipeline){
         userHive.createUser(pipeline.channel());
         pipeline.addLast(new ObjectEncoder(),
-                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor, this));
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)), new PacketHandler(packetDistributor, this), new ExceptionHandler());
     }
 
     public AbstractUser getUser(Channel channel){

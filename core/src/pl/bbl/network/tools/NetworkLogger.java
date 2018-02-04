@@ -4,8 +4,7 @@ public class NetworkLogger {
     private static LogType workingMode = LogType.INFO;
 
     public static void log(LogType logType, String message){
-        if(workingMode == logType)
-            System.out.println("[NETWORK_FRAMEWORK] " + message);
+        System.out.println("[NETWORK_FRAMEWORK] " + message);
     }
 
     public static void changeWorkingMode(LogType logType){
